@@ -44,7 +44,7 @@ public class Criminal extends Person implements Serializable {
 
 	@Override
 	public String toString() {
-		return super.toString() + ", 죄목명=" + crimeTitle + ", 현상금=" + bounty + "원, 범죄자 등록번호=" + criminalNum;
+		return super.toString() + ", 죄목명=" + crimeTitle + ", 현상금=" + bounty + "원, 범죄자등록번호=" + criminalNum;
 	}
 
 }
