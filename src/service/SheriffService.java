@@ -63,7 +63,7 @@ public class SheriffService implements ServiceInterface {
 	public Criminal searchCriminalByCriminalNum(String criminalNum) {
 		int idx = -1;
 		for(int i = 0 ; i < this.personList.size() ; i++) {
-			if(this.personList.get(i) instanceof Criminal) {  //범죄자라면
+			if(this.personList.get(i) instanceof Criminal) {//범죄자라면
 				Person p = this.personList.get(i);
 				Criminal c = (Criminal)p;
 				if(c.getCriminalNum().equals(criminalNum)) {
@@ -100,10 +100,8 @@ public class SheriffService implements ServiceInterface {
 				@Override
 				public int compare(Person s1, Person s2) {
 					
-					if(((Sheriff) s1).getcList().size() > ((Sheriff) s2).getcList().size() ) {
-						
+					if(((Sheriff) s1).getcList().size() > ((Sheriff) s2).getcList().size() ) {	
 						return -1;
-						
 					} else if(((Sheriff) s1).getcList().size() < ((Sheriff) s2).getcList().size()) {
 						return 1;
 					} else {
@@ -134,16 +132,14 @@ public class SheriffService implements ServiceInterface {
 			public int compare(Person s1, Person s2) {
 				
 				if(((Criminal) s1).getBounty() < ((Criminal) s2).getBounty() ) {
-					
 					return 1;
-					
 				} else if(((Criminal) s1).getBounty() > ((Criminal) s2).getBounty()) {
 					return -1;
 				} else {
 					return 0; 
 				}
-				
-			}}); 
+			}
+		}); 
 		
 			String str = "";
 			for(Person p : printList) {
@@ -152,11 +148,29 @@ public class SheriffService implements ServiceInterface {
 			return str;
 	}
 
-
 	@Override
-	public String unCaughtCriminalList() {
-		// TODO Auto-generated method stub
-		return null;
+	public String unCaughtCriminalList() { //미검거 범죄자 목록
+		ArrayList<Person> printList = new ArrayList<Person>();
+		Sheriff s = new Sheriff(); 
+	
+		
+		for(int i = 0 ; i < this.personList.size() ; i++) {
+			if(this.personList.get(i) instanceof Criminal) {
+				printList.add(this.personList.get(i));
+			}
+		}
+		
+		for(int i = 0 ; i < this.personList.size() ; i++) { //검거된 범죄자
+			if(this.personList.get(i) instanceof Sheriff) {
+				printList.removeAll(((Sheriff) this.personList.get(i)).getcList()); 
+			}
+		}
+		
+		String str = "";
+		for(Person p : printList) {
+			str += p.toString() + "\n";
+		}
+		return str;
 	}
 	
 	@Override
@@ -173,7 +187,6 @@ public class SheriffService implements ServiceInterface {
 				printList.add(this.personList.get(i));
 			}
 		}
-		
 		String str = "";
 		for(Person p : printList) {
 			str += p.toString() + "\n";
@@ -197,7 +210,6 @@ public class SheriffService implements ServiceInterface {
 				if(oos != null) oos.close();
 			}catch(IOException ex) {}
 		}
-
 	}
 
 	@Override

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class Sheriff extends Person implements Serializable {
 
 	private String officerNum;// 보안관번호
-	private ArrayList<Criminal> cList = new ArrayList<Criminal>();// 보안관이 잡은 범죄자
-																	// 리스트
+	private ArrayList<Criminal> cList = new ArrayList<Criminal>();// 보안관이 잡은 범죄자 리스트
 
+	
 	public Sheriff(String name, String ssn, String officerNum, ArrayList<Criminal> cList) {
 		super(name, ssn);
 		this.officerNum = officerNum;
@@ -45,5 +45,3 @@ public class Sheriff extends Person implements Serializable {
 	}
 
 }
-
-
