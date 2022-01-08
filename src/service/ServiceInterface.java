@@ -21,12 +21,16 @@ public interface ServiceInterface {
 	public String orderCriminalByHighBounty();//높은 현상금순으로 범죄자 출력
 
 	public String unCaughtCriminalList();//미검거 범죄자 목록
+	
+	public String CaughtCriminalList();//검거된 범죄자 목록
 
 	public String printAll();//전체출력, 보안관->범죄자순
 
 	public void saveFile();//파일저장, 종료시 1회 저장
 
 	public void loadFile();//파일로드, 시작시 1번 로드
+
+	
 
 }
 

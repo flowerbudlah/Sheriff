@@ -125,7 +125,6 @@ public class SheriffService implements ServiceInterface {
 				printList.add(this.personList.get(i));
 			}
 		}
-		
 		//높은 현상금 순 정렬하기
 		Collections.sort(printList, new Comparator<Person>() {
 			@Override
@@ -140,32 +139,45 @@ public class SheriffService implements ServiceInterface {
 				}
 			}
 		}); 
-		
 			String str = "";
 			for(Person p : printList) {
 				str += p.toString() + "\n";
-		}
+			}
 			return str;
-	}
+		}
 
 	@Override
 	public String unCaughtCriminalList() { //미검거 범죄자 목록
 		ArrayList<Person> printList = new ArrayList<Person>();
 		Sheriff s = new Sheriff(); 
 	
-		
 		for(int i = 0 ; i < this.personList.size() ; i++) {
 			if(this.personList.get(i) instanceof Criminal) {
 				printList.add(this.personList.get(i));
 			}
 		}
-		
 		for(int i = 0 ; i < this.personList.size() ; i++) { //검거된 범죄자
 			if(this.personList.get(i) instanceof Sheriff) {
 				printList.removeAll(((Sheriff) this.personList.get(i)).getcList()); 
 			}
 		}
-		
+		String str = "";
+		for(Person p : printList) {
+			str += p.toString() + "\n";
+		}
+		return str;
+	}
+
+	@Override
+	public String CaughtCriminalList() {//검거된 범죄자 출력
+		ArrayList<Person> printList = new ArrayList<Person>();
+		Sheriff s = new Sheriff(); 
+	
+		for(int i = 0 ; i < this.personList.size() ; i++) { //검거된 범죄자
+			if(this.personList.get(i) instanceof Sheriff) {
+				printList.addAll(((Sheriff) this.personList.get(i)).getcList()); 
+			}
+		}
 		String str = "";
 		for(Person p : printList) {
 			str += p.toString() + "\n";
@@ -211,7 +223,6 @@ public class SheriffService implements ServiceInterface {
 			}catch(IOException ex) {}
 		}
 	}
-
 	@Override
 	public void loadFile() {   //역직렬화
 		File file = new File(this.FILE_NAME);
@@ -234,7 +245,5 @@ public class SheriffService implements ServiceInterface {
 				if(ois != null) ois.close();
 			}catch(IOException ex) {}
 		}
-
 	}
-
 }

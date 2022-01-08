@@ -65,6 +65,9 @@ public class SheriffUI {
 				System.out.println(ss.unCaughtCriminalList());
 				break;
 			case 9:
+				System.out.println(ss.CaughtCriminalList());
+				break;
+			case 10:
 				System.out.println(ss.printAll());
 				break;
 			case 99:
@@ -86,7 +89,8 @@ public class SheriffUI {
 		System.out.println("6.보안관출력(범죄자검거수순으로)");
 		System.out.println("7.범죄자출력(높은현상금순으로)");
 		System.out.println("8.미검거범죄자 전체출력");
-		System.out.println("9.모든사람 전체출력(보안관 ->범죄자순)");
+		System.out.println("9.검거된 범죄자 출력");
+		System.out.println("10.모든사람 전체출력(보안관 ->범죄자순)");
 		System.out.println("99.프로그램종료");
 		System.out.println("============================");
 	}
@@ -119,7 +123,6 @@ public class SheriffUI {
 			break;
 		}
 		return result;
-
 	}
 
 }
